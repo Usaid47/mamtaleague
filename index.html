@@ -10,11 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Russo+One&family=Teko:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            /* This is a more robust way to prevent horizontal scrolling */
+            overflow-x: hidden;
+        }
         body {
             font-family: 'Teko', sans-serif;
             background-color: #000;
             color: white;
-            overflow-x: hidden;
+            position: relative; /* Ensure body is a positioning context */
         }
         .heading-font {
             font-family: 'Bebas Neue', sans-serif;
@@ -123,157 +127,159 @@
         }
     </style>
 </head>
-<body class="relative">
-    <div id="floatingElements"></div>
+<body>
+    <!-- This wrapper no longer needs overflow-x-hidden since it's applied to the body -->
+    <div class="w-full">
+        <div id="floatingElements"></div>
 
-    <header class="stadium-bg min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-        <div class="text-center px-4 z-10">
-            <div class="flex justify-center items-center mb-6">
-                <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" alt="Football" class="w-16 h-16 mx-4 float-animation">
-                <h1 class="heading-font text-6xl md:text-8xl text-white neon-text">MAMTA FOOTBALL LEAGUE</h1>
-                <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" alt="Football" class="w-16 h-16 mx-4 float-animation">
-            </div>
-            <p class="text-xl md:text-2xl text-green-400 mb-8">The ultimate football showdown in Pusad</p>
-            <a href="#registration" class="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-full text-xl transition-all duration-300 neon-glow">REGISTER NOW</a>
-        </div>
-    </header>
-    
-    <!-- Live Score Section -->
-    <section id="live-score" class="py-8 px-4 md:px-8 bg-gray-900 relative overflow-hidden hidden">
-        <div id="live-score-content" class="max-w-4xl mx-auto bg-black p-6 rounded-lg neon-border text-center">
-            <!-- Live score will be injected here -->
-        </div>
-    </section>
-
-    <section id="registration" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
-        <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg neon-border relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-2 neon-text">ABHI REGISTER KARIYE</h2>
-            <p class="text-center text-green-400 mb-8 text-xl">Har player ke liye Aadhaar Card compulsory hai</p>
-            <form action="https://formsubmit.co/matlabipodcast@gmail.com" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="hidden" name="_subject" value="New Mamta Football League Registration!">
-                <div>
-                    <label for="name" class="block text-white mb-2">Naam</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+        <header class="stadium-bg min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+            <div class="text-center px-4 z-10">
+                <div class="flex justify-center items-center mb-6">
+                    <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" alt="Football" class="w-16 h-16 mx-4 float-animation">
+                    <h1 class="heading-font text-6xl md:text-8xl text-white neon-text">MAMTA FOOTBALL LEAGUE</h1>
+                    <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" alt="Football" class="w-16 h-16 mx-4 float-animation">
                 </div>
-                <div>
-                    <label for="dob" class="block text-white mb-2">Date of Birth</label>
-                    <input type="date" id="dob" name="date_of_birth" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                <p class="text-xl md:text-2xl text-green-400 mb-8">The ultimate football showdown in Pusad</p>
+                <a href="#registration" class="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-full text-xl transition-all duration-300 neon-glow">REGISTER NOW</a>
+            </div>
+        </header>
+        
+        <!-- Live Score Section -->
+        <section id="live-score" class="py-8 px-4 md:px-8 bg-gray-900 relative overflow-hidden hidden">
+            <div id="live-score-content" class="max-w-4xl mx-auto bg-black p-6 rounded-lg neon-border text-center">
+                <!-- Live score will be injected here -->
+            </div>
+        </section>
+
+        <section id="registration" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
+            <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg neon-border relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-2 neon-text">ABHI REGISTER KARIYE</h2>
+                <p class="text-center text-green-400 mb-8 text-xl">Har player ke liye Aadhaar Card compulsory hai</p>
+                <form action="https://formsubmit.co/matlabipodcast@gmail.com" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="hidden" name="_subject" value="New Mamta Football League Registration!">
+                    <div>
+                        <label for="name" class="block text-white mb-2">Naam</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    <div>
+                        <label for="dob" class="block text-white mb-2">Date of Birth</label>
+                        <input type="date" id="dob" name="date_of_birth" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    <div>
+                        <label for="aadhaar" class="block text-white mb-2">Aadhaar Number</label>
+                        <input type="text" id="aadhaar" name="aadhaar_number" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    <div>
+                        <label for="team-select" class="block text-white mb-2">Team</label>
+                        <select id="team-select" name="team" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                            <option>Loading Teams...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="contact" class="block text-white mb-2">Contact Number</label>
+                        <input type="tel" id="contact" name="contact_number" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    <div>
+                        <label for="upload" class="block text-white mb-2">Upload Aadhaar</label>
+                        <input type="file" id="upload" name="aadhaar_upload" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-4 rounded text-xl transition-all duration-300 neon-glow">SUBMIT REGISTRATION</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <section id="poll-zone" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
+            <div id="poll-container" class="max-w-4xl mx-auto relative z-10 bg-black p-8 rounded-lg neon-border">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">WHO WILL WIN THE LEAGUE?</h2>
+                <div id="poll-options" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <p class="text-center text-xl text-gray-400 col-span-2 sm:col-span-4">Loading Poll...</p>
                 </div>
-                <div>
-                    <label for="aadhaar" class="block text-white mb-2">Aadhaar Number</label>
-                    <input type="text" id="aadhaar" name="aadhaar_number" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
-                </div>
-                <div>
-                    <label for="team-select" class="block text-white mb-2">Team</label>
-                    <select id="team-select" name="team" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
-                        <option>Loading Teams...</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="contact" class="block text-white mb-2">Contact Number</label>
-                    <input type="tel" id="contact" name="contact_number" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
-                </div>
-                <div>
-                    <label for="upload" class="block text-white mb-2">Upload Aadhaar</label>
-                    <input type="file" id="upload" name="aadhaar_upload" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-green-500" required>
-                </div>
-                <div class="md:col-span-2">
-                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-4 rounded text-xl transition-all duration-300 neon-glow">SUBMIT REGISTRATION</button>
-                </div>
-            </form>
-        </div>
-    </section>
-    
-    <section id="poll-zone" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
-        <div id="poll-container" class="max-w-4xl mx-auto relative z-10 bg-black p-8 rounded-lg neon-border">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">WHO WILL WIN THE LEAGUE?</h2>
-            <div id="poll-options" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <p class="text-center text-xl text-gray-400 col-span-2 sm:col-span-4">Loading Poll...</p>
-            </div>
-            <div id="poll-results" class="hidden space-y-4">
-            </div>
-        </div>
-    </section>
-
-
-    <section id="teams" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">YE 8 TEAMS APAS ME TAKRAAYENGI</h2>
-            <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <p class="text-center text-xl text-gray-400 col-span-2 sm:col-span-4">Loading Teams...</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="fixtures" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto bg-black p-8 rounded-lg neon-border relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-8 neon-text">LEAGUE FIXTURES</h2>
-            <div id="fixtures-table" class="space-y-4">
-                <p class="text-center text-xl text-gray-400">Loading Fixtures...</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="rules" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
-        <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg neon-border relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-8 neon-text">LEAGUE RULES</h2>
-            <div class="space-y-6 text-xl">
-                <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Knockout Format – ek baar haare, bahar</p></div>
-                <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Referee ka decision final – no retake</p></div>
-                <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Gali-jhagda = direct penalty</p></div>
-                <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Ground pe kachra ya gandi harkat = fire from match</p></div>
-            </div>
-            <div class="mt-12 text-center"><p class="text-2xl md:text-3xl font-bold neon-text">YAHAN SIRF GAME CHALEGA, GUSSA NAHI</p></div>
-        </div>
-    </section>
-
-    <section id="prizes" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">PRIZES & REWARDS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-900 p-8 rounded-lg text-center neon-border"><div class="text-6xl mb-4">🥇</div><h3 class="text-3xl font-bold mb-2">1st Prize</h3><p class="text-xl text-green-400">₹5000 + Trophy</p></div>
-                <div class="bg-gray-900 p-8 rounded-lg text-center neon-border"><div class="text-6xl mb-4">🥈</div><h3 class="text-3xl font-bold mb-2">2nd Prize</h3><p class="text-xl text-green-400">₹2500 + Trophy</p></div>
-                <div class="bg-gray-900 p-8 rounded-lg text-center neon-border"><div class="text-6xl mb-4">🏅</div><h3 class="text-3xl font-bold mb-2">Individual Awards</h3><p class="text-xl text-green-400">Man of the Match - Trophy + Medal</p><p class="text-xl text-green-400">Winning Team - Individual Medals</p><p class="text-xl text-green-400">Team Trophy</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="motm" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">MAN OF THE MATCH</h2>
-            <div id="motm-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-                <p class="text-center text-xl text-gray-400 col-span-2 sm:col-span-4">Loading Man of the Match...</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="sponsors" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-4 neon-text">OUR SPONSORS</h2>
-            <div class="sponsor-container">
-                <div id="sponsor-track" class="sponsor-track">
+                <div id="poll-results" class="hidden space-y-4">
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="py-12 px-4 md:px-8 bg-black relative overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="text-center mb-8">
-                <p class="text-2xl font-bold mb-2">Mamta Cake Palace presents</p>
-                <h2 class="heading-font text-4xl md:text-5xl text-white neon-text mb-4">MAMTA FOOTBALL LEAGUE</h2>
-                <div class="flex justify-center space-x-6 mb-6">
-                    <a href="https://instagram.com/mamtacakepalace" target="_blank" class="text-white hover:text-green-400 text-3xl transition-colors duration-300">📸</a>
-                    <a href="https://wa.me/919876543210" target="_blank" class="text-white hover:text-green-400 text-3xl transition-colors duration-300">📱</a>
+        <section id="teams" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">YE 8 TEAMS APAS ME TAKRAAYENGI</h2>
+                <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <p class="text-center text-xl text-gray-400 col-span-2 sm:col-span-4">Loading Teams...</p>
                 </div>
-                <a href="https://g.co/kgs/h8ePZMg" target="_blank" class="text-green-400 hover:text-green-300 mb-4 inline-block">Location: Mamta Cake Palace, Pusad</a>
-                <p class="text-xl text-green-400">Follow karo aur pao 5% discount Mamta Cake Palace pe!</p>
             </div>
-            <div class="text-center text-gray-500 text-sm">
-                <p>© 2024 Mamta Football League. All rights reserved.</p>
+        </section>
+
+        <section id="fixtures" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto bg-black p-8 rounded-lg neon-border relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-8 neon-text">LEAGUE FIXTURES</h2>
+                <div id="fixtures-table" class="space-y-4">
+                    <p class="text-center text-xl text-gray-400">Loading Fixtures...</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <section id="rules" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
+            <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded-lg neon-border relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-8 neon-text">LEAGUE RULES</h2>
+                <div class="space-y-6 text-xl">
+                    <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Knockout Format – ek baar haare, bahar</p></div>
+                    <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Referee ka decision final – no retake</p></div>
+                    <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Gali-jhagda = direct penalty</p></div>
+                    <div class="flex items-start"><div class="text-green-500 mr-4 text-2xl">⚽</div><p>Ground pe kachra ya gandi harkat = fire from match</p></div>
+                </div>
+                <div class="mt-12 text-center"><p class="text-2xl md:text-3xl font-bold neon-text">YAHAN SIRF GAME CHALEGA, GUSSA NAHI</p></div>
+            </div>
+        </section>
+
+        <section id="prizes" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">PRIZES & REWARDS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-900 p-8 rounded-lg text-center neon-border"><div class="text-6xl mb-4">🥇</div><h3 class="text-3xl font-bold mb-2">1st Prize</h3><p class="text-xl text-green-400">₹5000 + Trophy</p></div>
+                    <div class="bg-gray-900 p-8 rounded-lg text-center neon-border"><div class="text-6xl mb-4">🥈</div><h3 class="text-3xl font-bold mb-2">2nd Prize</h3><p class="text-xl text-green-400">₹2500 + Trophy</p></div>
+                    <div class="bg-gray-900 p-8 rounded-lg text-center neon-border"><div class="text-6xl mb-4">🏅</div><h3 class="text-3xl font-bold mb-2">Individual Awards</h3><p class="text-xl text-green-400">Man of the Match - Trophy + Medal</p><p class="text-xl text-green-400">Winning Team - Individual Medals</p><p class="text-xl text-green-400">Team Trophy</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="motm" class="py-16 px-4 md:px-8 bg-black relative overflow-hidden">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-12 neon-text">MAN OF THE MATCH</h2>
+                <div id="motm-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <p class="text-center text-xl text-gray-400 col-span-2 sm:col-span-4">Loading Man of the Match...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sponsors" class="py-16 px-4 md:px-8 bg-gray-900 relative overflow-hidden">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-white text-center mb-4 neon-text">OUR SPONSORS</h2>
+                <div class="sponsor-container">
+                    <div id="sponsor-track" class="sponsor-track">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-12 px-4 md:px-8 bg-black relative overflow-hidden">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-8">
+                    <p class="text-2xl font-bold mb-2">Mamta Cake Palace presents</p>
+                    <h2 class="heading-font text-4xl md:text-5xl text-white neon-text mb-4">MAMTA FOOTBALL LEAGUE</h2>
+                    <div class="flex justify-center space-x-6 mb-6">
+                        <a href="https://instagram.com/mamtacakepalace" target="_blank" class="text-white hover:text-green-400 text-3xl transition-colors duration-300">📸</a>
+                        <a href="https://wa.me/919876543210" target="_blank" class="text-white hover:text-green-400 text-3xl transition-colors duration-300">📱</a>
+                    </div>
+                    <a href="https://g.co/kgs/h8ePZMg" target="_blank" class="text-green-400 hover:text-green-300 mb-4 inline-block">Location: Mamta Cake Palace, Pusad</a>
+                    <p class="text-xl text-green-400">Follow karo aur pao 5% discount Mamta Cake Palace pe!</p>
+                </div>
+                <div class="text-center text-gray-500 text-sm">
+                    <p>© 2024 Mamta Football League. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
         // --- Google Sheet URLs ---
@@ -289,7 +295,7 @@
             rotateOnScroll();
             smoothScrolling();
             
-            loadLiveScore(); 
+            loadLiveScore();  
             setInterval(loadLiveScore, 30000);
         });
 
